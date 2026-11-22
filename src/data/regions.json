@@ -1,0 +1,66 @@
+[
+ {
+  "id": "punjab",
+  "name": "Punjab",
+  "station": "Ludhiana",
+  "lat": 30.8,
+  "lon": 75.6,
+  "elevation": 240
+ },
+ {
+  "id": "uttar-pradesh",
+  "name": "Uttar Pradesh",
+  "station": "Lucknow",
+  "lat": 26.7,
+  "lon": 80.7,
+  "elevation": 123
+ },
+ {
+  "id": "maharashtra",
+  "name": "Maharashtra",
+  "station": "Aurangabad",
+  "lat": 19.8,
+  "lon": 75.5,
+  "elevation": 561
+ },
+ {
+  "id": "karnataka",
+  "name": "Karnataka",
+  "station": "Dharwad",
+  "lat": 15.4,
+  "lon": 75.1,
+  "elevation": 628
+ },
+ {
+  "id": "tamil-nadu",
+  "name": "Tamil Nadu",
+  "station": "Thanjavur",
+  "lat": 10.7,
+  "lon": 79.2,
+  "elevation": 25
+ },
+ {
+  "id": "west-bengal",
+  "name": "West Bengal",
+  "station": "Bardhaman",
+  "lat": 23.3,
+  "lon": 87.8,
+  "elevation": 63
+ },
+ {
+  "id": "gujarat",
+  "name": "Gujarat",
+  "station": "Anand",
+  "lat": 22.5,
+  "lon": 72.9,
+  "elevation": 47
+ },
+ {
+  "id": "madhya-pradesh",
+  "name": "Madhya Pradesh",
+  "station": "Bhopal",
+  "lat": 23.1,
+  "lon": 77.5,
+  "elevation": 429
+ }
+]

@@ -1,0 +1,198 @@
+[
+ {
+  "region": "punjab",
+  "samplePoints": 2,
+  "ph": 7.91,
+  "organicCarbon": 8,
+  "nitrogen": 0.81,
+  "clay": 24.9,
+  "sand": 41.6,
+  "silt": 33.5,
+  "cec": 15.5,
+  "bulkDensity": 1.5,
+  "points": [
+   {
+    "lat": 30.8,
+    "lon": 75.6
+   },
+   {
+    "lat": 30.15,
+    "lon": 74.95
+   }
+  ]
+ },
+ {
+  "region": "uttar-pradesh",
+  "samplePoints": 3,
+  "ph": 7.1,
+  "organicCarbon": 10.3,
+  "nitrogen": 1,
+  "clay": 27,
+  "sand": 31.7,
+  "silt": 41.3,
+  "cec": 18.1,
+  "bulkDensity": 1.34,
+  "points": [
+   {
+    "lat": 26.7,
+    "lon": 80.7
+   },
+   {
+    "lat": 29.1,
+    "lon": 77.8
+   },
+   {
+    "lat": 26.6,
+    "lon": 83
+   }
+  ]
+ },
+ {
+  "region": "maharashtra",
+  "samplePoints": 3,
+  "ph": 7.33,
+  "organicCarbon": 8,
+  "nitrogen": 1,
+  "clay": 46,
+  "sand": 24,
+  "silt": 30,
+  "cec": 38.9,
+  "bulkDensity": 1.57,
+  "points": [
+   {
+    "lat": 19.8,
+    "lon": 75.5
+   },
+   {
+    "lat": 20.7,
+    "lon": 77.1
+   },
+   {
+    "lat": 17.75,
+    "lon": 75.7
+   }
+  ]
+ },
+ {
+  "region": "karnataka",
+  "samplePoints": 3,
+  "ph": 6.93,
+  "organicCarbon": 16.1,
+  "nitrogen": 1.01,
+  "clay": 35.2,
+  "sand": 36.8,
+  "silt": 28,
+  "cec": 32.1,
+  "bulkDensity": 1.39,
+  "points": [
+   {
+    "lat": 15.4,
+    "lon": 75.1
+   },
+   {
+    "lat": 16.1,
+    "lon": 77.2
+   },
+   {
+    "lat": 12.5,
+    "lon": 76.8
+   }
+  ]
+ },
+ {
+  "region": "tamil-nadu",
+  "samplePoints": 3,
+  "ph": 7.33,
+  "organicCarbon": 20.9,
+  "nitrogen": 1.52,
+  "clay": 32.5,
+  "sand": 42.2,
+  "silt": 25.3,
+  "cec": 26.9,
+  "bulkDensity": 1.45,
+  "points": [
+   {
+    "lat": 10.7,
+    "lon": 79.2
+   },
+   {
+    "lat": 11,
+    "lon": 77.2
+   },
+   {
+    "lat": 9.95,
+    "lon": 78
+   }
+  ]
+ },
+ {
+  "region": "west-bengal",
+  "samplePoints": 2,
+  "ph": 6.46,
+  "organicCarbon": 12.3,
+  "nitrogen": 1.53,
+  "clay": 38.9,
+  "sand": 18.5,
+  "silt": 42.6,
+  "cec": 19,
+  "bulkDensity": 1.33,
+  "points": [
+   {
+    "lat": 23.3,
+    "lon": 87.8
+   },
+   {
+    "lat": 22.95,
+    "lon": 88.1
+   }
+  ]
+ },
+ {
+  "region": "gujarat",
+  "samplePoints": 2,
+  "ph": 7.2,
+  "organicCarbon": 9.3,
+  "nitrogen": 0.99,
+  "clay": 29.8,
+  "sand": 40.3,
+  "silt": 30,
+  "cec": 29.5,
+  "bulkDensity": 1.56,
+  "points": [
+   {
+    "lat": 22.5,
+    "lon": 72.9
+   },
+   {
+    "lat": 22.2,
+    "lon": 70.9
+   }
+  ]
+ },
+ {
+  "region": "madhya-pradesh",
+  "samplePoints": 3,
+  "ph": 7.31,
+  "organicCarbon": 8.1,
+  "nitrogen": 0.85,
+  "clay": 46.4,
+  "sand": 15,
+  "silt": 38.6,
+  "cec": 44.6,
+  "bulkDensity": 1.68,
+  "points": [
+   {
+    "lat": 23.1,
+    "lon": 77.5
+   },
+   {
+    "lat": 22.6,
+    "lon": 75.7
+   },
+   {
+    "lat": 23.1,
+    "lon": 79.9
+   }
+  ]
+ }
+]
