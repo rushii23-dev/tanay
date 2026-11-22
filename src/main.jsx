@@ -1,11 +1,15 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
-import '@fontsource-variable/bricolage-grotesque/wdth.css';
-import '@fontsource-variable/public-sans';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/cormorant-garamond/700.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource-variable/manrope';
 import './index.css';
 import './farm.css';
 import './rich.css';
+import './editorial.css';
 import App from './App.jsx';
 
 try {

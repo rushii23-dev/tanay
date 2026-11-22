@@ -35,7 +35,7 @@ export default function Risk() {
 
   return (
     <Page>
-      <PageBanner photo="leafYellow" crumb="Disease risk" title="Is the weather working for the disease?" wheat>
+      <PageBanner photo="leafYellow" crumb="Disease risk" title="Is the weather working for the disease?">
         Set temperature, humidity and rainfall, or load a state’s real averages for any month, to see how favourable they are for six common crop diseases.
       </PageBanner>
       <div className="page-body">

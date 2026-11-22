@@ -19,7 +19,7 @@ export default function Yields() {
 
   return (
     <Page>
-      <PageBanner photo="wheatSky" crumb="Crop yields" title="Ten years of harvests, state by state." wheat>
+      <PageBanner photo="wheatSky" crumb="Crop yields" title="Ten years of harvests, state by state.">
         Official yield figures from the Ministry of Agriculture and Farmers Welfare for six crop groups, from 2013-14 to 2022-23. Yield is
         the harvest per hectare, the clearest way to compare how productive farmland is.
       </PageBanner>

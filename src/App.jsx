@@ -108,6 +108,14 @@ export default function App() {
   const [theme, toggleTheme] = useTheme();
   const { pathname } = useLocation();
   const headerRef = useRef(null);
+  const [atTop, setAtTop] = useState(true);
+
+  useEffect(() => {
+    const on = () => setAtTop(window.scrollY < 60);
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, []);
 
   // Smooth scrolling, driven by GSAP's ticker so ScrollTrigger stays in sync.
   useEffect(() => {
@@ -144,7 +152,7 @@ export default function App() {
       <ScrollProgress />
       <RouteCurtain />
       <Cursor />
-      <header className="site-header" ref={headerRef}>
+      <header className={`site-header ${atTop && !open ? 'is-top' : ''}`} ref={headerRef}>
         <div className="wrap">
           <Link to="/" className="brand" aria-label="CropShield AI home" onClick={close}>
             <Logo />

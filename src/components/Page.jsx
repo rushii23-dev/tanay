@@ -1,9 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { HillStrip } from './Scene';
 import { Photo, SplitText } from './Photo';
-import { PHOTOS } from '../lib/photos';
 import { useReveal, useInView, scrollToId, useGSAP, gsap, reduceMotion } from '../lib/motion';
 
 /** Wraps a page so every [data-reveal], [data-stagger], [data-split], [data-clip], [data-parallax], [data-count] inside it animates. */
@@ -13,7 +11,7 @@ export function Page({ children, deps = [] }) {
   return <div ref={ref}>{children}</div>;
 }
 
-export function PageBanner({ crumb, title, children, wheat = false, photo }) {
+export function PageBanner({ crumb, title, children, photo }) {
   const ref = useRef(null);
   useGSAP(
     () => {
@@ -23,7 +21,7 @@ export function PageBanner({ crumb, title, children, wheat = false, photo }) {
       tl.from('.crumbs', { autoAlpha: 0, y: 16, duration: 0.6 }, 0.2)
         .from('h1 .split-c', { yPercent: 120, rotate: 6, duration: 1, stagger: 0.025, ease: 'power4.out' }, 0.3)
         .from('p.lead', { autoAlpha: 0, y: 24, duration: 0.8 }, 0.75)
-        .from('svg.scene', { yPercent: 60, duration: 1.4 }, 0.15);
+        .from('.banner-rule', { scaleX: 0, transformOrigin: 'left', duration: 1.2, ease: 'power4.inOut' }, 0.5);
       if (photo) {
         gsap.to('.banner-media', { yPercent: 22, ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true } });
         gsap.to('.banner-inner', { yPercent: -30, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true } });
@@ -46,10 +44,9 @@ export function PageBanner({ crumb, title, children, wheat = false, photo }) {
           <span>{crumb}</span>
         </nav>
         <h1><SplitText text={title} by="char" /></h1>
+        <span className="banner-rule" aria-hidden="true" />
         {children && <p className="lead">{children}</p>}
       </div>
-      {photo && <span className="photo-credit">Photo: @{PHOTOS[photo].by} on Unsplash</span>}
-      <HillStrip wheat={wheat} />
     </header>
   );
 }
@@ -78,11 +75,10 @@ export function InView({ height, children }) {
 }
 
 /** Large photo that wipes in on scroll and drifts with parallax. */
-export function PhotoReveal({ k, height = 520, className = '', caption = true }) {
+export function PhotoReveal({ k, height = 520, className = '' }) {
   return (
     <figure className={`photo-reveal ${className}`} data-clip style={{ height }}>
       <div className="pr-inner" data-parallax="8"><Photo k={k} sizes="(max-width: 900px) 100vw, 50vw" /></div>
-      {caption && <figcaption>Photo: @{PHOTOS[k].by} on Unsplash</figcaption>}
     </figure>
   );
 }

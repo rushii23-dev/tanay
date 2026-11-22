@@ -5,13 +5,12 @@ import {
 } from 'lucide-react';
 import { Photo, SplitText } from '../components/Photo';
 import { Leaves } from '../components/Effects';
-import { PHOTOS } from '../lib/photos';
-import { HillStrip, CardArt } from '../components/Scene';
+import StateRows from '../components/StateRows';
 import MonsoonStripes from '../components/MonsoonStripes';
 import { Page, PhotoReveal } from '../components/Page';
 import { gsap, useGSAP, reduceMotion, scrollToId } from '../lib/motion';
 import {
-  REGIONS, summary, latestYield, colorOf, fmt, WEATHER, YIELDS, STATE_INFO, climatology, seasonalRain, yieldValue, regionById,
+  REGIONS, summary, fmt, WEATHER, YIELDS, seasonalRain, yieldValue, regionById,
 } from '../lib/data';
 import { DISEASES } from '../lib/risk';
 
@@ -29,7 +28,6 @@ function Hero() {
         .from('h1 .split-c', { yPercent: 120, rotate: 8, duration: 1.1, stagger: 0.025, ease: 'power4.out' }, 0.5)
         .from('.lead', { autoAlpha: 0, y: 26, duration: 0.9 }, 1.1)
         .from('.hero-actions > *', { autoAlpha: 0, y: 24, scale: 0.9, stagger: 0.12, duration: 0.8, ease: 'back.out(1.8)' }, 1.25)
-        .from('svg.scene', { yPercent: 70, duration: 1.5 }, 0.3)
         .from('.hero-meta, .scroll-cue', { autoAlpha: 0, duration: 0.8 }, 1.6);
 
       // crossfading slideshow with a slow Ken Burns zoom on every photo
@@ -63,7 +61,6 @@ function Hero() {
       // scroll: photo sinks, text lifts away, drawn hills rise
       gsap.to('.slides', { yPercent: 18, scale: 1.05, ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true } });
       gsap.to('.hero-inner', { y: -160, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: '70% top', scrub: true } });
-      gsap.to('svg.scene', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true } });
       return () => {
         alive = false;
         pending?.kill();
@@ -94,14 +91,13 @@ function Hero() {
         </div>
       </div>
       <div className="hero-meta">
-        <span>{PHOTOS[SLIDES[active]].alt}. Photo: @{PHOTOS[SLIDES[active]].by}, Unsplash</span>
+        <span className="hero-count">{String(active + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}</span>
         <div className="hero-dots">{SLIDES.map((k) => <button key={k} aria-label={`Photo ${k}`} tabIndex={-1}><i /></button>)}</div>
       </div>
       <a className="scroll-cue" href="#stats" onClick={(e) => { e.preventDefault(); scrollToId('stats'); }}>
         <span className="mouse" aria-hidden="true" />
         Scroll to explore
       </a>
-      <HillStrip />
     </section>
   );
 }
@@ -116,7 +112,6 @@ function PhotoMarquee() {
         {tiles.map((k, i) => (
           <div className="tile" key={i} aria-hidden={i >= MARQUEE.length}>
             <Photo k={k} sizes="320px" />
-            <span>@{PHOTOS[k].by}</span>
           </div>
         ))}
       </div>
@@ -304,30 +299,7 @@ export default function Home() {
             </div>
             <Link className="btn btn-quiet" to="/compare">Compare states</Link>
           </div>
-          <div className="state-cards" data-stagger>
-            {REGIONS.map((r, i) => {
-              const s = summary(r.id);
-              const rice = latestYield(r.id, 'rice');
-              const clim = climatology(r.id);
-              const max = Math.max(...clim.map((c) => c.rainfall));
-              return (
-                <Link key={r.id} to={`/states/${r.id}`} className="state-card" data-tilt>
-                  <div className="art"><CardArt color={colorOf(r.id)} seed={i + 1} /></div>
-                  <div className="body">
-                    <h3><span className="dot" style={{ background: colorOf(r.id) }} />{r.name}</h3>
-                    <span className="crops">{STATE_INFO[r.id].crops.join(', ')}</span>
-                    <div className="spark" title="Average monthly rainfall, January to December">
-                      {clim.map((c) => <i key={c.month} style={{ height: `${Math.max(4, (c.rainfall / max) * 100)}%` }} />)}
-                    </div>
-                    <dl>
-                      <div><dt>Rain a year</dt><dd>{fmt(s.annualRain)}<small>mm</small></dd></div>
-                      <div><dt>Rice yield</dt><dd>{rice ? fmt(rice.value) : '—'}<small>kg/ha</small></dd></div>
-                    </dl>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+          <StateRows />
         </div>
       </section>
 
@@ -339,7 +311,6 @@ export default function Home() {
           <h2 data-split><SplitText text="Behind every number is a field, a season and a farmer." /></h2>
           <p data-reveal>The charts on this site are built from public records. The people in these photographs are why those records matter.</p>
         </div>
-        <span className="photo-credit">Photo: @{PHOTOS.transplanting.by} on Unsplash</span>
       </section>
 
       <Pipeline />
@@ -403,7 +374,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="cta-field">
+      <section className="cta-field statement">
+        <div className="bg" data-parallax="10"><Photo k="wheatGold" /></div>
         <div className="wrap" data-reveal>
           <h2 data-split><SplitText text="Start with the state you know best." /></h2>
           <p>Open its climate, soil and harvest profile, then see which months put its crops at risk.</p>
@@ -415,7 +387,6 @@ export default function Home() {
             <Link className="btn btn-primary btn-lg magnetic" to="/states">See all states</Link>
           </div>
         </div>
-        <HillStrip wheat />
       </section>
     </Page>
   );
