@@ -227,3 +227,7 @@ table.data tbody tr:hover td { background: color-mix(in srgb, var(--wheat) 7%, t
 .page-body .section:first-child { padding-top: 0; }
 .dz { padding: 64px 0; border-top-color: var(--line-strong); }
 .dz h2 { font-size: clamp(2.4rem, 4vw, 3.4rem); }
+
+/* dropdown: invisible bridge over the gap so moving from the trigger to the menu keeps it open */
+.nav-menu:not(.mobile-only)::before { content: ''; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.nav-menu { border-radius: 10px; }

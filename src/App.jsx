@@ -64,16 +64,26 @@ function useTheme() {
   return [theme, toggle];
 }
 
+const canHover = () => window.matchMedia('(hover: hover) and (min-width: 981px)').matches;
+
 function NavGroup({ group, pathname, openGroup, setOpenGroup, close }) {
+  const closeTimer = useRef(null);
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
   const open = openGroup === group.label;
   const active = group.items.some(([to]) => pathname === to || (to === '/states' && pathname.startsWith('/states')));
   return (
-    <div className="nav-group" data-label={group.label} onMouseLeave={() => open && setOpenGroup(null)}>
+    <div
+      className="nav-group"
+      data-label={group.label}
+      onMouseEnter={() => { clearTimeout(closeTimer.current); if (canHover()) setOpenGroup(group.label); }}
+      onMouseLeave={() => { if (!canHover()) return; clearTimeout(closeTimer.current); closeTimer.current = setTimeout(() => setOpenGroup((g) => (g === group.label ? null : g)), 260); }}
+    >
       <button
         className={`nav-trigger ${active ? 'active' : ''}`}
         aria-expanded={open}
-        onClick={() => setOpenGroup(open ? null : group.label)}
-        onMouseEnter={() => matchMedia('(hover: hover) and (min-width: 981px)').matches && setOpenGroup(group.label)}
+        aria-haspopup="true"
+        // On hover devices the menu is already open from hovering, so a click keeps it open instead of toggling it shut.
+        onClick={() => setOpenGroup(canHover() ? group.label : open ? null : group.label)}
       >
         {group.label}
         <ChevronDown aria-hidden="true" />
