@@ -24,7 +24,6 @@ function Hero() {
       if (reduceMotion()) return;
       const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
       intro.from('.slides', { autoAlpha: 0, duration: 1.4 }, 0)
-        .from('.hero-tag', { autoAlpha: 0, y: 20, duration: 0.7 }, 0.4)
         .from('h1 .split-c', { yPercent: 120, rotate: 8, duration: 1.1, stagger: 0.025, ease: 'power4.out' }, 0.5)
         .from('.lead', { autoAlpha: 0, y: 26, duration: 0.9 }, 1.1)
         .from('.hero-actions > *', { autoAlpha: 0, y: 24, scale: 0.9, stagger: 0.12, duration: 0.8, ease: 'back.out(1.8)' }, 1.25)
@@ -79,7 +78,6 @@ function Hero() {
       <div className="shade" />
       <Leaves />
       <div className="wrap hero-inner">
-        <span className="hero-tag"><i><Sprout aria-hidden="true" /></i>Real public data for 8 Indian farming states</span>
         <h1><SplitText text="Every harvest begins with weather and soil." by="char" /></h1>
         <p className="lead">
           CropShield AI brings ten years of monthly weather, topsoil measurements and official crop yields into one place, so you can see how
